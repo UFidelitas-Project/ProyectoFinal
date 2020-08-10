@@ -1,0 +1,77 @@
+#container{
+    margin:20px;
+}
+
+#container h1{
+	font-size: 32px;
+	display: inline-block;
+}
+
+.form_register input[type=text], .form_register input[type=email], .form_register input[type=password], .form_register  input[type=number]{
+	width: 50%;
+}
+.crear{
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.btn_save{
+	width: 170px;
+}
+.alert{
+	width: 100%;
+	background: #66e07d66;
+	border-radius: 6px;
+	margin: 20px auto;
+	
+}
+.msg_error{
+	color: #e65656;
+}
+.msg_save{
+	color: #126e00;
+}
+.alert p{
+	padding: 10px;
+}
+
+table{
+	border-collapse: collapse;
+	font-size: 12pt;
+	font-family: 'arial';
+	width: 100%;
+}
+table th{
+	text-align: left;
+	padding: 10px;
+	background: #343a40;
+	color: #FFF;
+}
+
+table td{
+	padding: 10px;
+}
+.btn_new_cliente{
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+#btn_anular_venta, #btn_facturar_venta{
+	margin-bottom: 20px;
+}
+#btn_facturar_venta{
+	margin-left: 5px;
+}
+
+.datos_venta{
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.acciones{
+	margin-left: 70px;
+}
+
+#div_registro_cliente, #add_product_venta, #btn_facturar_venta{
+	display: none;
+}
