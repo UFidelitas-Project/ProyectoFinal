@@ -1,12 +1,12 @@
 <?php 
 	
 	session_start();
-	if($_SESSION['rol'] != 1)
+	include "../conexion.php";	
+	if($_SESSION['idUser'] != 1)
 	{
 		header("location: ./");
 	}
 
-	include "../conexion.php";
 
 	if(!empty($_POST))
 	{
@@ -20,10 +20,10 @@
 			$nombre = $_POST['nombre'];
 			$email  = $_POST['correo'];
 			$user   = $_POST['usuario'];
-			$clave  = md5($_POST['clave']);
+			$contraseña  = md5($_POST['contraseña']);
 
 
-			$query = mysqli_query($conection,"SELECT * FROM usuario 
+			$query = mysqli_query($laconexion,"SELECT * FROM usuario 
 													   WHERE (usuario = '$user' AND idusuario != $idUsuario)
 													   OR (correo = '$email' AND idusuario != $idUsuario) ");
 
@@ -33,14 +33,14 @@
 				$alert='<p class="msg_error">El correo o el usuario ya existe.</p>';
 			}else{
 
-				if(empty($_POST['clave']))
+				if(empty($_POST['contraseña']))
 				{
 
-					$sql_update = mysqli_query($conection,"UPDATE usuario
+					$sql_update = mysqli_query($laconexion,"UPDATE usuario
 															SET nombre = '$nombre', correo='$email',usuario='$user'
 															WHERE idusuario= $idUsuario ");
 				}else{
-					$sql_update = mysqli_query($conection,"UPDATE usuario
+					$sql_update = mysqli_query($laconexion,"UPDATE usuario
 															SET nombre = '$nombre', correo='$email',usuario='$user',contraseña='$contraseña'
 															WHERE idusuario= $idUsuario ");
 
@@ -67,10 +67,10 @@
 	}
 	$iduser = $_REQUEST['id'];
 
-	$sql= mysqli_query($conection,"SELECT idusuario, nombre, correo, usuario
+	$sql= mysqli_query($laconexion,"SELECT idusuario, nombre, correo, usuario
 									FROM usuario 
 									WHERE idusuario= '$iduser' ");
-	mysqli_close($conection);
+	mysqli_close($laconexion);
 	$result_sql = mysqli_num_rows($sql);
 
 	if($result_sql == 0){
@@ -83,7 +83,6 @@
 			$nombre  = $data['nombre'];
 			$correo  = $data['correo'];
 			$usuario = $data['usuario'];
-			$rol     = $data['rol'];
 
 		}
 	}
